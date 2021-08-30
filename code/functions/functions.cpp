@@ -6,6 +6,16 @@ void printFiveCharacters(FastToCopy argument) {
     printf("The first five characters are '%.5s'\n", argument.data);
 }
 
+void printFiveCharacters2(SlowToCopy argument) {
+    printf("The first five characters are '%.5s'\n", argument.data);
+}
+
+void printFiveCharactersRef(const SlowToCopy &argument) {
+  // const then error because it's constant - & for reference
+  //argument.data[0] = 'a';
+    printf("The first five characters are '%.5s'\n", argument.data);
+}
+
 /* Tasks:
  * 1. Check out Structs.h. It defines two structs that we will work with.
  *    FastToCopy
@@ -26,8 +36,10 @@ int main() {
     printFiveCharacters(fast);
 
     SlowToCopy slow = {"ghijk"};
+    printFiveCharacters2(slow);
     // print it here
 
+    printFiveCharactersRef(slow);
 
 
     return 0;
