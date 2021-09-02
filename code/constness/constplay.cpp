@@ -30,32 +30,32 @@ int main() {
     // try pointer to constant
     int a = 1, b = 2;
     int const *i = &a;
-    *i = 5;
-    i = &b;
+    //*i = 5; //Error, in is const
+    i = &b; //ok, pointer is not const
 
     // try constant pointer
     int * const j = &a;
-    *j = 5;
-    j = &b;
+    *j = 5; //ok
+    //j = &b; //Error, pointer is const
 
     // try constant pointer to constant
-    int const * const k = &a;
-    *k = 5;
-    k = &b;
+    //int const * const k = &a; //error
+    //*k = 5; //Error
+    //k = &b; //Error
 
     // try constant arguments of functions
     int l = 0;
     const int m = 0;
-    identity(l);
-    identity(m);
-    identityConst(l);
-    identityConst(m);    
+    identity(l); //ok
+    identity(m); //error
+    identityConst(l); //ok
+    identityConst(m); //ok
 
     // try constant arguments of functions with pointers
     int *p = 0;
     const int *r = 0;
     identityp(p);
-    identityp(r);
+    //identityp(r); //error
     identitypConst(p);
     identitypConst(r);    
 
@@ -64,7 +64,7 @@ int main() {
     const ConstTest tc;
     std::string s("World");
     t.hello(s);
-    tc.hello(s);
+    //tc.hello(s);
     t.helloConst(s);
     tc.helloConst(s);    
 }

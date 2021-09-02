@@ -1,7 +1,8 @@
 class Polygon {
 public:
     Polygon(int n, float radius);
-    float computePerimeter();
+    // have to use virtual for virtual method 
+    virtual float computePerimeter();
 protected:
     int m_nbSides;
     int m_radius;
@@ -16,5 +17,7 @@ class Hexagon : public Polygon {
 public:
     Hexagon(float radius);
     // 6*radius is easier than generic case
-    float computePerimeter();
+    // have to use override for virutal method
+    // warning have to run with -Wc++11-extensions added in Makefile
+    float computePerimeter() override;
 };

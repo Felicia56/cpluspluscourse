@@ -3,10 +3,14 @@
 
 int main() {
     // create a TextBox and call draw
-
-
-    // Fix the code to call both draws by using types
+    TextBox myTextBox("My Text", 2.5, 2.0);
+    myTextBox.draw(); //error draw ambigous
     
+    // Fix the code to call both draws by using types
+    Text &t = myTextBox; 
+    t.draw();
+    Rectangle &r = myTextBox;
+    r.draw();
 
     // try with virtual inheritance
 

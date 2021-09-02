@@ -25,20 +25,20 @@ void fillVector(int* v, unsigned int len) {
 }
 
 int main() {
-    int v[LEN-1];
+    int v[LEN];
     // create and randomize vector
     fillVector(v, LEN+1);
     randomize(v, LEN+1);
 
     // compute diffs
-    int diffs[LEN];
-    for (unsigned int i = 0; i < LEN; i++)
+    int diffs[LEN-1];
+    for (unsigned int i = 0; i < LEN-1; i++)
         diffs[i] = v[i+1] - v[i];
 
     // compute standard deviation of it
     float sum = 0;
     float sumsq = 0;
-    for (unsigned int i = 0; i < LEN; i ++) {
+    for (unsigned int i = 0; i < LEN-1; i ++) {
         sum += diffs[i];
         sumsq += diffs[i]*diffs[i];
     }

@@ -5,7 +5,7 @@ clean:
 	rm -f *o *so smartPointers *~ smartPointers.sol
 
 % : %.cpp
-	$(CXX) -g -std=c++17 -Wall -Wextra -o $@ $<
+	$(CXX) -g -std=c++17 -Wall -Wextra -fsanitize=address -fno=omit-frame-pointer -O0 -o $@ $<
 
 %.sol : solution/%.sol.cpp
 	$(CXX) -g -std=c++17 -Wall -Wextra -o $@ $<

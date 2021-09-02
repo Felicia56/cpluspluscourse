@@ -1,5 +1,7 @@
 #include <string>
 
+// Commented out is usual, below with virtual inheritance
+
 class Drawable {
 public:
     Drawable(int id);
@@ -8,7 +10,8 @@ private:
     int m_id;
 };
 
-class Rectangle : public Drawable {
+//class Rectangle : public Drawable {
+class Rectangle : public virtual Drawable {
 public:
     Rectangle(int id, float width, float height);
 protected:
@@ -16,7 +19,8 @@ protected:
     int m_height;
 };
 
-class Text : public Drawable {
+//class Text : public Drawable {
+class Text : public virtual Drawable {
 public:
     Text(int id, std::string content);
 protected:

@@ -2,15 +2,19 @@
 #include <iostream>
 #include <string>
 
+// lauch via `make && ./particles` -> expression in my Makefile
+
 class Particle
  {
   public  :
     Particle( double mass ) : mass_(mass) {}
+    Particle( const Particle & ) = delete;
     double mass() { return mass_ ; }
     virtual std::string name() { return "Particle" ; }
-    virtual ~Particle() {}
+    //virtual ~Particle() {}
+    virtual ~Particle() = default;
   private  :
-    Particle( const Particle & ) ; // non copiable
+    //Particle( const Particle & ) ; // non copiable -> move to public with delete constructor
     double mass_ ;
  } ;
 
@@ -20,7 +24,8 @@ class ChargedParticle : public Particle
     ChargedParticle( double mass, double charge )
      : Particle(mass), charge_(charge) {}
     double charge() { return charge_ ; }
-    virtual std::string name() { return "ChargedParticle" ; }
+    // adding override
+    virtual std::string name() override { return "ChargedParticle" ; }
   private  :
     double charge_ ;
  } ;

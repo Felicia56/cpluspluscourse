@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <stdlib.h>
 
 // Task 1:
 // Here we write past the end of a character array on the stack.
@@ -33,8 +34,9 @@ void stackOverflow() {
 
   char* ptr = a;
 
+  // Solution : 10 to 4
   std::cout << "Now writing into the array:" << std::endl;
-  for (unsigned int i = 0; i < 10; ++i) {
+  for (unsigned int i = 0; i < 4; ++i) {
     ptr[i] = 'a' + i;
   }
 
@@ -49,9 +51,11 @@ void stackOverflow() {
 // - If asan doesn't report a "use-after-free", the compiler might have inlined the function.
 //   You can try different optimisation flags such as -O0 / -O1 / -O2
 // - Fix the problem.
-std::string& useAfterFree() {
+std::string useAfterFree() {
   auto str = std::make_unique<std::string>("A temporary string");
-  return *str;
+  //std::cout << *str << std::endl;
+  auto a = *str;
+  return a;
 }
 
 // Task 3:
@@ -69,8 +73,10 @@ std::string& memoryLeak() {
 
 int main() {
   stackOverflow();
-  std::cout << "String from useAfterFree is:'" << useAfterFree() << '\'' << std::endl;
-  std::cout << "Dynamically allocated string is:'" << memoryLeak() << '\'' << std::endl;
+  std::string b = useAfterFree();
+  std::string c = memoryLeak();
+  std::cout << "String from useAfterFree is:'" << b << '\'' << std::endl;
+  std::cout << "Dynamically allocated string is:'" << c << '\'' << std::endl;
 
   return 0;
 }

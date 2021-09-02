@@ -15,4 +15,6 @@ Text::Text(int id, std::string content) :
 
 TextBox::TextBox(std::string content,
                  float width, float height) :
-    Rectangle(1, width, height), Text(2, content) {}
+    // for virtual exo :
+    Drawable(3), Rectangle(1, width, height), Text(2, content) {}
+//Rectangle(1, width, height), Text(2, content) {}

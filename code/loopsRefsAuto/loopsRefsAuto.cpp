@@ -1,4 +1,7 @@
+// functions as printf
 #include <cstdio>
+// functions as cin cout
+#include <iostream>
 
 struct DontCopyMe {
    int resultA;
@@ -25,6 +28,7 @@ int main() {
      collection[i].resultA = i;
      collection[i].resultB = i+100;
      printf("resultA = %d\tresultB = %d\n", collection[i].resultA, collection[i].resultB);
+     // cout << "resultA: " << resultA << endl;
    }
 
 

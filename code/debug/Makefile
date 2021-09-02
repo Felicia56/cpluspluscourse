@@ -5,7 +5,7 @@ clean:
 	rm -f *o randomize *~ randomize.sol core
 
 randomize : randomize.cpp
-	${CXX} -g -O0 -L. -o $@ $<
+	${CXX} -g -O0 -Wall -Wextra -L. -o $@ $<
 
 randomize.sol : solution/randomize.sol.cpp
 	${CXX} -g -O0 -Wall -Wextra -L. -o $@ $<
